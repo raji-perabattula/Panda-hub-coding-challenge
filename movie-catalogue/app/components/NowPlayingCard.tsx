@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Movie } from '../types/movie';
 import { IMAGE_BASE } from '../../constants/BaseUrls';
 import { router } from 'expo-router';

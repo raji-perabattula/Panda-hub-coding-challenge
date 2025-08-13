@@ -1,4 +1,4 @@
-import React, { use, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,6 @@ import {
   StyleSheet,
   Image,
   TextInput,
-  FlatList,
   TouchableOpacity,
   ScrollView,
 } from 'react-native';
@@ -75,6 +74,7 @@ export default function MoviesScreen() {
     }
   }, [isComingSeeAllClicked, allComingSoon]);
 
+  //loader when data is being fetched
   if (loading) {
     return (
       <View style={styles.center}>
@@ -127,6 +127,7 @@ export default function MoviesScreen() {
   );
 }
 
+// Section Header Component
 export function SectionHeader({ title, onSeeAll, isSeeAllClicked }: { title: string; onSeeAll: () => void; isSeeAllClicked?: boolean }) {
   return (
     <View style={styles.sectionHeader}>

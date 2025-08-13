@@ -1,13 +1,15 @@
-import { CastMember, CinemaData } from "@/app/types/movie";
+import { Cast, CinemaData } from "@/app/types/movie";
 
+// Base URLs for images and API
 export const IMAGE_BASE = 'https://image.tmdb.org/t/p/w500';
 export const API_BASE_URL = 'https://api.themoviedb.org/3';
 
-//random user icon image
+//random user icon image and dummy banner for cinema
 export const RANDOM_USER_IMAGE = 'https://randomuser.me/api/portraits/men/1.jpg';
 export const CGV_BANNER = 'https://homepage.momocdn.net/cinema/momo-amazone-s3-api-240829164527-638605467276820522.png';
 
-export const dummyCast: CastMember[] = [
+// Dummy data for cast for movie details screen
+export const dummyCast: Cast[] = [
   {
     id: 1,
     name: "Tom Holland",
@@ -25,6 +27,7 @@ export const dummyCast: CastMember[] = [
   },
 ];
 
+// Dummy data for cinema for movie details screen
 export const dummyCinemaData: CinemaData[]=[
   {
     id: 1,

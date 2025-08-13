@@ -1,7 +1,7 @@
 import React from 'react';
-import { View, Text, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
+import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import CarouselCard from './CarouselCard';
-import { Movie, Cast, MovieOrCast } from '../types/movie';
+import { MovieOrCast } from '../types/movie';
 import { SectionHeader } from '../movies';
 import * as Styles from '../../constants/StylingVariables';
 
@@ -10,16 +10,17 @@ interface CarouselSectionProps {
     isComingSeeAllClicked?: boolean;
     setIsComingSeeAllClicked?: React.Dispatch<React.SetStateAction<boolean>>;
     isCast?: boolean;
-    shouldSeeAllPresent?:boolean;
-    isCinemaCard?:boolean;
+    shouldSeeAllPresent?: boolean;
+    isCinemaCard?: boolean;
     setActiveCinemaIndex?: React.Dispatch<React.SetStateAction<number>>;
-    activeCinemaIndex?: number;
+    activeCinemaIndex?: number; // Index of the active cinema card to highlight
 }
 
-const CarouselSection: React.FC<CarouselSectionProps> = ({ activeCinemaIndex, setActiveCinemaIndex,data, isComingSeeAllClicked, setIsComingSeeAllClicked, isCast, shouldSeeAllPresent=false, isCinemaCard=false }) => {
+const CarouselSection: React.FC<CarouselSectionProps> = ({ activeCinemaIndex, setActiveCinemaIndex, data, isComingSeeAllClicked, setIsComingSeeAllClicked, isCast, shouldSeeAllPresent = false, isCinemaCard = false }) => {
     return (
         <View style={[styles.container, isCast && styles.castContainer]}>
-            {!isCast&&shouldSeeAllPresent && <SectionHeader
+            {/* render section header only if not cast and see all is present */}
+            {!isCast && shouldSeeAllPresent && <SectionHeader
                 title="Coming Soon"
                 onSeeAll={() => {
                     if (setIsComingSeeAllClicked && typeof isComingSeeAllClicked === 'boolean') {
@@ -28,18 +29,19 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ activeCinemaIndex, se
                 }}
                 isSeeAllClicked={isComingSeeAllClicked ?? false}
             />
-}
+            }
 
             <FlatList
                 data={data}
                 keyExtractor={(item) => item.id.toString()}
-                renderItem={({ item, index }) => <CarouselCard data={item} isCast={isCast}
-                activeCinemaIndex={activeCinemaIndex}
-                setActiveCinemaIndex={setActiveCinemaIndex}
-                isCinemaCard={isCinemaCard}
-                
-                index={index}
-                />}
+                renderItem={({ item, index }) =>
+                    <CarouselCard data={item} isCast={isCast}
+                        activeCinemaIndex={activeCinemaIndex}
+                        setActiveCinemaIndex={setActiveCinemaIndex}
+                        isCinemaCard={isCinemaCard}
+
+                        index={index}
+                    />}
                 showsVerticalScrollIndicator={false}
                 horizontal={isCast ? true : false}
             />
@@ -51,7 +53,7 @@ const styles = StyleSheet.create({
     container: {
         marginTop: Styles.spacing16,
     },
-    castContainer:{
+    castContainer: {
         marginHorizontal: Styles.spacing16,
     }
 });

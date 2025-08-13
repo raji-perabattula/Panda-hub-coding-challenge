@@ -23,7 +23,7 @@ const ITEM_SIZE = CARD_WIDTH + SPACING * 2;
 export default function NowPlayingCarousel(props: NowPlayingCarouselProps) {
     const scrollX = useRef(new Animated.Value(0)).current;
     const flatListRef = useRef<Animated.FlatList<Movie>>(null);
-        const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(null);
+    const [targetScrollIndex, setTargetScrollIndex] = useState<number | null>(null);
 
     // looping data for circular rotation of carousel
     const originalData = props.nowPlaying;

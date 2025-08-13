@@ -3,24 +3,22 @@ import { View, Text, Image, ScrollView, ActivityIndicator, StyleSheet, Dimension
 import { useNavigation } from 'expo-router';
 import { getMovieDetails } from '../services/movieService';
 import { MovieDetails } from '../types/movie';
-import { CGV_BANNER, dummyCinemaData, IMAGE_BASE, RANDOM_USER_IMAGE } from '../../constants/BaseUrls';
+import { dummyCinemaData, IMAGE_BASE, RANDOM_USER_IMAGE } from '../../constants/BaseUrls';
 import { useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { dummyCast } from '../../constants/BaseUrls';
 import * as Styles from '../../constants/StylingVariables';
 import CarouselSection from '../components/CarouselSection';
 
-const { width } = Dimensions.get('window');
-
 export default function MovieDetail() {
   const navigation = useNavigation();
   const route = useRoute();
   const { id } = route.params as { id: string };
-
   const [movie, setMovie] = useState<MovieDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeCinemaIndex, setActiveCinemaIndex] = useState(0);
 
+  // Fetch movie details using the ID from the route params
   useEffect(() => {
     const load = async () => {
       try {
@@ -37,10 +35,12 @@ export default function MovieDetail() {
     load();
   }, [id]);
 
+  // loader when data is being fetched
   if (loading) {
     return <ActivityIndicator style={{ flex: 1, justifyContent: 'center' }} />;
   }
 
+  // If movie is not found, show a message
   if (!movie) {
     return (
       <View style={styles.center}>
@@ -48,9 +48,11 @@ export default function MovieDetail() {
       </View>
     );
   }
+
   // Function to truncate text if it exceeds a certain length for synopsis text
   const truncate = (text: string, maxChars: number) =>
     text.length > maxChars ? text.slice(0, maxChars) + '...' : text;
+
   return (
     <View style={styles.container}>
       {/* Background Image */}
@@ -90,7 +92,7 @@ export default function MovieDetail() {
             <Text style={styles.directorName}>Jon Watts</Text>
           </View>
           <TouchableOpacity style={styles.trailerButton}>
-            <Ionicons name="play" size={16} color={Styles.primaryTextColor}/>
+            <Ionicons name="play" size={16} color={Styles.primaryTextColor} />
             <Text style={styles.trailerText}>Watch trailer</Text>
           </TouchableOpacity>
         </View>
@@ -109,19 +111,19 @@ export default function MovieDetail() {
         {/* Cast and Crew Section */}
         <View style={{ marginTop: Styles.spacing4 }}>
           <Text style={styles.cast_title}>Cast</Text>
-          <CarouselSection  data={dummyCast} isCast={true}/>
+          <CarouselSection data={dummyCast} isCast={true} />
         </View>
 
         {/* Cinema banner Section */}
         <View>
           <Text style={styles.banner_sec_title}>Cinema</Text>
-          <CarouselSection data={dummyCinemaData} isCinemaCard={true} activeCinemaIndex={activeCinemaIndex} setActiveCinemaIndex={setActiveCinemaIndex}/>
+          <CarouselSection data={dummyCinemaData} isCinemaCard={true} activeCinemaIndex={activeCinemaIndex} setActiveCinemaIndex={setActiveCinemaIndex} />
         </View>
       </ScrollView>
       {/* book now button */}
       <View style={styles.bookNowButton}>
-          <Text style={styles.bookNowText}>Book Now</Text>
-        </View>
+        <Text style={styles.bookNowText}>Book Now</Text>
+      </View>
     </View>
   );
 }
@@ -130,6 +132,8 @@ const styles = StyleSheet.create({
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   container: { flex: 1, backgroundColor: Styles.backgroundDarkColor },
   backdrop: { width: "100%", height: Styles.cardHeight, justifyContent: "flex-start" },
+
+  // Back Button styles
   backButton: {
     marginTop: Styles.spacing24,
     marginLeft: Styles.spacing16,
@@ -140,6 +144,8 @@ const styles = StyleSheet.create({
     width: Styles.iconSize,
     justifyContent: 'center',
   },
+
+  // Details Card styles start 
   card: {
     backgroundColor: Styles.searchBgColor,
     marginHorizontal: Styles.spacing16,
@@ -167,6 +173,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   trailerText: { color: Styles.primaryTextColor, marginLeft: Styles.spacing4, fontSize: Styles.fontSizeSmall },
+  // End of Details Card styles
+
+  // Description Section styles start
   descriptionSection: {
     padding: Styles.spacing16,
     marginTop: Styles.spacing8,
@@ -174,21 +183,24 @@ const styles = StyleSheet.create({
   des_title: { color: Styles.primaryTextColor, fontSize: Styles.fontSizeLarge, marginBottom: Styles.spacing16 },
   des_text: { color: Styles.secondaryTextColor, fontSize: Styles.fontSizeMedium },
   read_more: { color: Styles.highlightColor, fontSize: Styles.fontSizeMedium, marginLeft: Styles.spacing4 },
-  cast_title:{
+  // Description Section styles end
+
+  // Cast Section title styles
+  cast_title: {
     color: Styles.primaryTextColor,
     fontSize: Styles.fontSizeLarge,
     marginLeft: Styles.spacing16,
   },
 
   // Cinema banner styles
-  banner_sec_title:{
+  banner_sec_title: {
     color: Styles.primaryTextColor,
     fontSize: Styles.fontSizeLarge,
     marginHorizontal: Styles.spacing16,
     marginTop: Styles.spacing8,
   },
 
-  // Book Now Button
+  // Book Now Button styles start
   bookNowButton: {
     position: 'absolute',
     bottom: Styles.spacing16,

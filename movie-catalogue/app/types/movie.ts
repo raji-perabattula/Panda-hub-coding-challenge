@@ -1,3 +1,4 @@
+//Movies list types
 export type Movie = {
   id: number;
   title: string;
@@ -7,6 +8,7 @@ export type Movie = {
   release_date: string;
 };
 
+//Movie details type
 export type MovieDetails = Movie & {
   runtime: number;
   genres: { id: number; name: string }[];
@@ -14,12 +16,14 @@ export type MovieDetails = Movie & {
   homepage: string;
 };
 
+//Cast member type - carousel in movie details screen
 export type Cast = {
   id: number;
   name: string;
   poster_path: string | null;
 };
 
+//Cinema data type - carousel in movie details screen
 export type CinemaData = {
   id: number;
   name: string;
@@ -27,9 +31,4 @@ export type CinemaData = {
   overview: string;
 }
 
-export type CastMember ={
-  id: number;
-  name: string;
-  poster_path: string;
-}
 export type MovieOrCast = Movie | Cast | CinemaData;

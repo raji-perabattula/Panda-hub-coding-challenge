@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
-import { Cast, Movie, MovieOrCast } from '../types/movie';
+import { MovieOrCast } from '../types/movie';
 import { IMAGE_BASE } from '../../constants/BaseUrls';
 import * as Styles from '../../constants/StylingVariables';
 import { router } from 'expo-router';
@@ -22,14 +22,15 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ activeCinemaIndex, data, in
                 isCast && styles.castCard, 
                 isCinemaCard && index== activeCinemaIndex && styles.bannerContentContainer]}
             onPress={() => {
-                if (onPress) onPress();
+                if (onPress) onPress(); // Call the onPress function if provided for custom behavior
                 if (!isCast && !isCinemaCard) {
-                    router.push(`/movie/${data.id}`);
+                    router.push(`/movie/${data.id}`); // Navigate to movie details if it is coming soon card
                 } else if (isCinemaCard) {
-                    setActiveCinemaIndex(index);
+                    setActiveCinemaIndex(index); // Set the active cinema index to highlight the selected cinema card
                 }
             }}
         >
+            {/* Render image conditionally based on whether it's a cast or cinema card */}
             {!isCinemaCard && <>
                 {data.poster_path ? (
                     <Image
@@ -43,6 +44,7 @@ const CarouselCard: React.FC<CarouselCardProps> = ({ activeCinemaIndex, data, in
                 )}</>
             }
 
+            {/* Render content conditionally based on whether it's a cast or cinema card */}
             {isCinemaCard ? (
                 <View style={styles.cinemaTextContainer}>
                     <View style={styles.contentContainer}>
