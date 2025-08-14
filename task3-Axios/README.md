@@ -78,7 +78,15 @@ Fetched 100 posts and showing first 2 posts:
 ]
 
 Fetching post with ID 5...
-Post of ID 5 is: [object Object]
+Fetched Post by ID given:  {
+  userId: 1,
+  id: 5,
+  title: 'nesciunt quas odio',
+  body: 'repudiandae veniam quaerat sunt sed\n' +
+    'alias aut fugiat sit autem sed est\n' +
+    'voluptatem omnis possimus esse voluptatibus quis\n' +
+    'est aut tenetur dolor neque'
+}
 
 Creating a new post...
 Created post: {

@@ -11,7 +11,7 @@ async function main() {
     // Fetch single post by ID and log it start
   console.log('\nFetching post with ID 5...');
   const post = await getPostById(5);
-  console.log(`Post of ID 5 is: ${post}`);
+  console.log('Fetched Post by ID given: ',post);
     // Fetch single post by ID and log it end
 
     // Create a new post and log the response start
