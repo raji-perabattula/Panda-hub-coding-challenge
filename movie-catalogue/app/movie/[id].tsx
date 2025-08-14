@@ -3,11 +3,11 @@ import { View, Text, Image, ScrollView, ActivityIndicator, StyleSheet, Dimension
 import { useNavigation } from 'expo-router';
 import { getMovieDetails } from '../services/movieService';
 import { MovieDetails } from '../types/movie';
-import { dummyCinemaData, IMAGE_BASE, RANDOM_USER_IMAGE } from '../../constants/BaseUrls';
+import { dummyCinemaData, IMAGE_BASE, RANDOM_USER_IMAGE } from '../constants/BaseUrls';
 import { useRoute } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
-import { dummyCast } from '../../constants/BaseUrls';
-import * as Styles from '../../constants/StylingVariables';
+import { dummyCast } from '../constants/BaseUrls';
+import * as Styles from '../constants/StylingVariables';
 import CarouselSection from '../components/CarouselSection';
 
 export default function MovieDetail() {
@@ -98,7 +98,7 @@ export default function MovieDetail() {
         </View>
       </View>
 
-      <ScrollView style={{ flex: 1 }}>
+      <ScrollView style={{ flex: 1 }} nestedScrollEnabled={true}>
         {/* Movie Description */}
         <View style={styles.descriptionSection}>
           <Text style={styles.des_title}>Synopsis</Text>

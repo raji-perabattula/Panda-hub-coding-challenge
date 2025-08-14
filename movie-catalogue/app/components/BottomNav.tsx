@@ -1,7 +1,7 @@
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { MaterialIcons, FontAwesome5 } from "@expo/vector-icons";
-import * as Styles from "../../constants/StylingVariables";
+import * as Styles from "../constants/StylingVariables";
 
 export default function BottomNav() {
   return (

@@ -3,7 +3,7 @@ import { View, StyleSheet, FlatList, TouchableOpacity } from 'react-native';
 import CarouselCard from './CarouselCard';
 import { MovieOrCast } from '../types/movie';
 import { SectionHeader } from '../movies';
-import * as Styles from '../../constants/StylingVariables';
+import * as Styles from '../constants/StylingVariables';
 
 interface CarouselSectionProps {
     data: MovieOrCast;
@@ -44,6 +44,7 @@ const CarouselSection: React.FC<CarouselSectionProps> = ({ activeCinemaIndex, se
                     />}
                 showsVerticalScrollIndicator={false}
                 horizontal={isCast ? true : false}
+                nestedScrollEnabled={true} //to avoid nested scroll warnings
             />
         </View>
     );

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Image, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Movie } from '../types/movie';
-import { IMAGE_BASE } from '../../constants/BaseUrls';
+import { IMAGE_BASE } from '../constants/BaseUrls';
 import { router } from 'expo-router';
-import * as Styles from '../../constants/StylingVariables';
+import * as Styles from '../constants/StylingVariables';
 
 type NowPlayingCardProps = {
   movie: Movie;

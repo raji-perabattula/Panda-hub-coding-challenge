@@ -12,8 +12,8 @@ import {
 } from 'react-native';
 import { getPopularMovies, getUpcomingMovies } from './services/movieService';
 import { Movie } from './types/movie';
-import { RANDOM_USER_IMAGE } from '../constants/BaseUrls';
-import * as Styles from '../constants/StylingVariables';
+import { RANDOM_USER_IMAGE } from './constants/BaseUrls';
+import * as Styles from './constants/StylingVariables';
 import NowPlayingCarousel from './components/NowPlayingCarousel';
 import CarouselSection from './components/CarouselSection';
 import BottomNav from './components/BottomNav';
@@ -85,7 +85,7 @@ export default function MoviesScreen() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} nestedScrollEnabled={true}>
         {/* Header with profile icon */}
         <View style={styles.headerRow}>
           <View>

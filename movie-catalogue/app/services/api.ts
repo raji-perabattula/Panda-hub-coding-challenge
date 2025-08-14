@@ -1,6 +1,6 @@
 import axios from 'axios';
 import Constants from 'expo-constants';
-import { API_BASE_URL } from '../../constants/BaseUrls';
+import { API_BASE_URL } from '../constants/BaseUrls';
 
 const API_KEY = Constants.expoConfig?.extra?.api_key;
 

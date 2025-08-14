@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react';
-import { Animated, Dimensions, View, StyleSheet } from 'react-native';
+import { Animated, Dimensions, View } from 'react-native';
 import NowPlayingCard from './NowPlayingCard';
-import * as Styles from '../../constants/StylingVariables';
+import * as Styles from '../constants/StylingVariables';
 import { Movie } from '../types/movie';
 import { SectionHeader } from '../movies';
 
@@ -103,6 +103,7 @@ export default function NowPlayingCarousel(props: NowPlayingCarouselProps) {
             <Animated.FlatList
                 ref={flatListRef}
                 data={carouselData}
+                nestedScrollEnabled={true} //to avoid nested scroll warnings
                 keyExtractor={(item, idx) => `${item.id}-${idx}`}
                 horizontal
                 showsHorizontalScrollIndicator={false}
@@ -113,19 +114,25 @@ export default function NowPlayingCarousel(props: NowPlayingCarouselProps) {
                     paddingHorizontal: (width - CARD_WIDTH) / 2, // centering the first card form 2nd list
                 }}
                 onMomentumScrollEnd={handleScrollEnd}
-                onScroll={(event) => {
-                    Animated.event(
-                        [{ nativeEvent: { contentOffset: { x: scrollX } } }],
-                        { useNativeDriver: true }
-                    )(event);
+                onScroll={Animated.event(
+                    [{ nativeEvent: { contentOffset: { x: scrollX } } }],
+                    {
+                        useNativeDriver: true,
+                        listener: (event) => {
+                            const offsetX = event.nativeEvent.contentOffset.x;
+                            const index = Math.round(offsetX / ITEM_SIZE);
 
-                    const offsetX = event.nativeEvent.contentOffset.x;
-                    const index = Math.round(offsetX / ITEM_SIZE);
-                    props.setActiveIndex(index % originalData.length);
-                    if (index === 0 || index === carouselData.length - 1) {
-                        handleScrollEnd(event);
+                            // Update active index
+                            props.setActiveIndex(index % originalData.length);
+
+                            // Handle infinite scroll edges
+                            if (index === 0 || index === carouselData.length - 1) {
+                                handleScrollEnd(event);
+                            }
+                        }
                     }
-                }}
+                )}
+
                 getItemLayout={(_, index) => ({
                     length: ITEM_SIZE,
                     offset: ITEM_SIZE * index,

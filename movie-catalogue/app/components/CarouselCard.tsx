@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native';
 import { MovieOrCast } from '../types/movie';
-import { IMAGE_BASE } from '../../constants/BaseUrls';
-import * as Styles from '../../constants/StylingVariables';
+import { IMAGE_BASE } from '../constants/BaseUrls';
+import * as Styles from '../constants/StylingVariables';
 import { router } from 'expo-router';
 
 interface CarouselCardProps {
