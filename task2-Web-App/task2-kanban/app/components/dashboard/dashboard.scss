@@ -1,0 +1,96 @@
+@import '../../styles/variables.scss';
+
+.dashboard_title{
+    font-size: $font-title;
+    color: $color-secondary;
+}
+.dash_icon{
+    width: $icon_xmd;
+    height: $icon_xmd;
+}
+.edit_icon{
+    width: $icon_md;
+    height: $icon_md;
+}
+.invite_text{
+    color: $active-color;
+    font-size: $font-size-base;
+}
+.menu_selected{
+    width: $size40;
+    height: $size40;
+}
+.view_select{
+    width: $size20;
+    height: $size20;
+}
+
+.arrow_down{
+    width: $icon_md;
+    height: $icon_md;
+    margin-left: -25px;
+}
+
+.vertical_divider{
+    width: 1px;
+    height: $size28px;
+    background-color: $color-primary;
+}
+
+.task_category{
+    width: 354px;
+}
+.to_do{
+.dot{
+    background-color: #5030E5;
+}
+}
+.to_do_sep{
+    width: 100%;
+    height: 3px;
+    background-color: #5030E5;
+}
+.in_progress{
+.dot{
+    background-color: #FFA500;
+}
+}
+.in_progress_sep{
+    width: 100%;
+    height: 3px;
+    background-color: #FFA500;
+}
+
+.done{
+.dot{
+    background-color: #8BC48A;
+}
+}
+.done_sep{
+    width: 100%;
+    height: 3px;
+    background-color: #8BC48A;
+}
+
+.task_list_title{
+    color: $color_secondary;
+    font-size: $font-size-base;
+}
+
+.num_task{
+    width: $size20;
+    height: $size20;
+    background-color: $bg-color-dark;
+    text-align: center;
+    color: $color-primary;
+}
+
+.low{
+    color: $orange;
+}
+.high{
+    color: $red;
+}
+.completed{
+    color: $success;
+}

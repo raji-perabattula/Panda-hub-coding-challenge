@@ -1,0 +1,35 @@
+@import '../../styles/variables';
+
+$bulb_bg: #FCD64A;
+
+.project-title{
+font-size: $font-size-xl;
+font-weight: $font-semi-bold;
+    color: $color-secondary;
+}
+
+.project-section{
+    border-bottom: 1px solid $border-color;
+    margin-right: -20px;
+    margin-left: -20px;
+    padding-bottom: 24px;
+}
+
+.my_projects{
+    font-size: $font-size-xs;
+    color: $color-primary;
+    font-weight: $font-bold;
+}
+
+.add_projects{
+    color: $color-primary;
+    padding: 0 4px;
+    height: 18px;
+}
+
+.bulb_cont{
+    background-color: $bulb_bg;
+    opacity: 0.4;
+    margin-bottom: -140px;
+    margin-left: 65px;
+}

@@ -1,0 +1,18 @@
+@import "../../styles/global.scss";
+@import "../../styles/variables.scss";
+
+$searchWidth: 417px;
+
+.header_container{
+    border-left: unset;
+}
+.search_section {
+    flex: 1;
+    max-width: $searchWidth;
+    width: 100%;
+    position: relative;
+}
+.profile-name{
+    font-size: $font-size-base;
+    color: $color-secondary;
+}
