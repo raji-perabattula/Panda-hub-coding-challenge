@@ -87,3 +87,6 @@ npm start
     Server sync (PATCH order to backend) once an API is provided
     Tests: reducer unit tests 
     Implement with original data
+    
+### Screenshot
+![alt text](image.png)
