@@ -12,11 +12,7 @@ export async function fetchTasks(limit = 10): Promise<Task[]> {
     priority: t.completed ? "Completed" : "Low",
     status: t.completed ? "done" : "todo",
     images: [],
-    assignees: [
-      '/assets/images/avatar1.png',
-      "/assets/images/avatar2.png",
-      "/assets/images/avatar3.png",
-    ], // Dummy profile images
+    assignees: [],
     comments: Math.floor(Math.random() * 10),
     files: Math.floor(Math.random() * 5),
   }));
